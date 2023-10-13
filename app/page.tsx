@@ -1,6 +1,13 @@
 import Image from 'next/image'
 
-export default function Home() {
+const fetchUser = () => {
+  fetch('https://dummyjson.com/users', { cache: 'force-cache' })
+    .then(res => res.json())
+    .then(console.log);
+}
+
+export default async function Home() {
+  const user = await fetchUser();
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
